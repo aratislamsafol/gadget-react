@@ -2,21 +2,38 @@ import bannerImg from '../../../src/assets/banner.jpg';
 
 export default function Banner() {
   return (
-    <div className='bg-[#9538E2] max-h-[600px] w-full h-full text-center mb-[50px] sm:mb-[160px] md:mb-[150px] lg:mb-[240px]'>
-     <div className='w-4/5 mx-auto pt-4 sm:pt-6 md:pt-8 lg:pt-10'>
-      <h1 className='text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold'>Upgrade Your Tech Accessorize with Gadget Heaven Accessories</h1>
-        <p className='text-white py-4 sm:py-6'>Explore the latest gadgets that will take your experience to the next level. From smart devices to the coolest accessories, we have it all!</p>
-        <button type='button' className='p-3 px-6 cursor-pointer bg-gray-50 rounded-4xl font-bold text-[#9538E2]'>Shop Now</button>
-     </div>
-      {/*  */}
-      <div className="w-11/12 md:w-3/5 mx-auto border-2 rounded-lg border-gray-100 p-3 md:p-5 bg-white/5 transform translate-y-10 z-10">
-        <img
-          src={bannerImg}
-          className="w-full max-h-[563px] rounded-lg"
-          alt="banner "
-        />
+    <section className="">
+      <div className="bg-[#9538E2] text-white">
+        <div className="mx-auto w-11/12 max-w-screen-xl">
+          <div className="mx-auto max-w-screen-lg text-center">
+            <h1 className="py-6 text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl">
+              Upgrade Your Tech Accessorize with Gadget Heaven Accessories
+            </h1>
+            <p className="mx-auto text-sm sm:text-base">
+              Explore the latest gadgets that will take your experience to the
+              next level. From smart devices to the coolest accessories, we have
+              it all!
+            </p>
+            <button className="my-8 rounded-full bg-white px-6 py-3 font-bold text-[#9538E2]">
+              Shop Now
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
-
+      <div className="relative p-4 md:p-0">
+        <div className="mx-auto max-w-screen-lg rounded-2xl border-2 bg-white/20 p-4">
+          <img
+            src={bannerImg}
+            alt=""
+            className="aspect-video rounded-2xl object-cover"
+          />
+        </div>
+        <div className="absolute inset-0 -z-10 grid h-full w-full grid-rows-3">
+          <div className="row-span-1 rounded-b-xl bg-[#9538E2]"></div>
+          <div className="row-span-2"></div>
+        </div>
+        <div className="h-10"></div>
+      </div>
+    </section>
   );
 }
