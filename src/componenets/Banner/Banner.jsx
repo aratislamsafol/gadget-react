@@ -14,14 +14,14 @@ export default function Banner() {
               next level. From smart devices to the coolest accessories, we have
               it all!
             </p>
-            <button className="my-8 rounded-full bg-white px-6 py-3 font-bold text-[#9538E2]">
+            <button className="my-8 rounded-full bg-white px-6 py-3 font-bold text-[#9538E2] cursor-pointer">
               Shop Now
             </button>
           </div>
         </div>
       </div>
       <div className="relative p-4 md:p-0">
-        <div className="mx-auto max-w-screen-lg rounded-2xl border-2 bg-white/20 p-4">
+        <div className="mx-auto max-w-screen-lg rounded-2xl border-2 border-gray-50 bg-white/20 p-4">
           <img
             src={bannerImg}
             alt=""
