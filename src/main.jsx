@@ -4,14 +4,21 @@ import './index.css'
 import { createBrowserRouter, RouterProvider,} from "react-router";
 import Root from './componenets/Root/Root';
 import Home from './componenets/Home/Home';
+import ProductDetails from './componenets/ProductDetails/ProductDetails';
+import Loader from './componenets/utlis/Loader';
 
 const router = createBrowserRouter([
   {
     path: '/', element: <Root/>,
     children: [
       {
-        path:'/', element:<Home />
-      }
+        path:'/', element:<Home />,
+        loader: Loader('/product_dataset.json')
+      },
+      {
+        path:'productdetails/:id', element: <ProductDetails/>,
+        loader: Loader('/product_dataset.json')
+      }, 
     ]
   },
 ])

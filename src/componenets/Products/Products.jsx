@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
+import Card from "../utlis/Card";
 
-export default function Products() {
+export default function Products({datum}) {
   return (
     <div>
         <h3 className="font-bold text-2xl md:text-3xl lg:text-4xl text-center md:mt-4">Explore Cutting-Edge Gadgets</h3>
@@ -35,49 +36,9 @@ export default function Products() {
             {/* main Content */}
             <div className="col-span-8 md:col-span-10 shadow-md p-3">
                 <div className="grid grid-cols-1 md:grid cols-2 lg:grid-cols-3 gap-5">
-                  <div class="card bg-base-100 shadow-sm pb-2">
-                    <figure className="p-3 rounded-lg">
-                      <img
-                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Shoes" className="rounded-lg"/>
-                    </figure>
-                    <div class="card-body p-2 px-4 ">
-                      <h2 class="card-title">Card Title</h2>
-                      <p className="place-self-start">Price : 200tk</p>
-                      <div class="card-actions">
-                        <button class="btn btn-primary rounded-3xl">View Details</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card bg-base-100 shadow-sm">
-                    <figure className="p-3 rounded-lg">
-                      <img
-                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Shoes" className="rounded-lg"/>
-                    </figure>
-                    <div class="card-body p-2 px-4 ">
-                      <h2 class="card-title">Card Title</h2>
-                      <p className="place-self-start">Price : 200tk</p>
-                      <div class="card-actions">
-                        <button class="btn btn-primary rounded-3xl">View Details</button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="card bg-base-100 shadow-sm">
-                    <figure className="p-3 rounded-lg">
-                      <img
-                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Shoes" className="rounded-lg"/>
-                    </figure>
-                    <div class="card-body p-2 px-4 ">
-                      <h2 class="card-title">Card Title</h2>
-                      <p className="place-self-start">Price : 200tk</p>
-                      <div class="card-actions">
-                        <button class="btn btn-primary rounded-3xl">View Details</button>
-                      </div>
-                    </div>
-                  </div>
+                  {
+                    datum.map(data => <Card key={data.product_id} data={data}/>)
+                  }
                 </div>
             </div>
         </div>
