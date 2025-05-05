@@ -8,7 +8,7 @@ export default function Navbar() {
     const links = <>
         <li><NavLink to="/" className="font-medium text-base text-gray-700">Home</NavLink></li>
         <li><a className="font-medium text-base text-gray-700">Statistics</a></li>
-        <li><a className="font-medium text-base text-gray-700">Dashboard</a></li>
+        <li><Link to="dashboard" className="font-medium text-base text-gray-700">Dashboard</Link></li>
     </>
 
 

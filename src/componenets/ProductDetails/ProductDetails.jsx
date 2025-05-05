@@ -1,16 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Rating from 'react-rating';
 import { useLoaderData, useParams } from 'react-router-dom';
 import { FaStar, FaRegStar } from "react-icons/fa";
 import Button from '../utlis/Button';
 import { IoMdHeartEmpty } from "react-icons/io";
 import { PiShoppingCart } from "react-icons/pi";
+import ProductContext from '../utlis/ProductContext';
 
 export default function ProductDetails() {
+  const {handleToCart, handleToWishlist} = useContext(ProductContext);
   const {id} = useParams();
   const allData = useLoaderData();
   const targetData = allData.find(data => data.product_id === id)
-   const {product_id, product_title, product_image, price, description, Specification, availability, rating } = targetData;
+  const {product_id, product_title, product_image, price, description, Specification, availability, rating } = targetData;
+
   return (
     <section>
       <div className='p-4 md:p-8 bg-[#9538E2]'>
@@ -40,16 +43,16 @@ export default function ProductDetails() {
               <p className='text-black text-base md:text-lg font-bold'>Specification:</p>
               <ol className='list-decimal list-inside text-gray-600'>
                 {
-                  Specification.map(sp => <li key={product_id}>{sp}</li>)
+                  Specification.map((sp, index) => <li key={index}>{sp}</li>)
                 }
               </ol>
               <span className='flex gap-2 font-bold text-lg'>Rating ⭐</span>
               <Rating initialRating={rating} emptySymbol={<FaRegStar className="text-gray-400 w-5 h-5" />} fullSymbol={<FaStar className="text-yellow-400 w-5 h-5" />}/>
 
               <div className="flex gap-2">
-              <Button className=" hover:bg-purple-800"><span className='flex gap-2'>Add To Card <PiShoppingCart className='w-5 h-5'/></span></Button>
+              <Button onClick={()=>handleToCart(product_id)} className=" hover:bg-purple-800"><span className='flex gap-2'>Add To Card <PiShoppingCart className='w-5 h-5'/></span></Button>
 
-              <Button className="rounded-full hover:bg-purple-800 flex items-center justify-center "><IoMdHeartEmpty className='w-4 h-4'/></Button>
+              <Button onClick={()=>handleToWishlist(product_id)} className="rounded-full hover:bg-purple-800 flex items-center justify-center "><IoMdHeartEmpty className='w-4 h-4'/></Button>
               </div>
             </div>
           </div>

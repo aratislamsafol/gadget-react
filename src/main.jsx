@@ -6,6 +6,7 @@ import Root from './componenets/Root/Root';
 import Home from './componenets/Home/Home';
 import ProductDetails from './componenets/ProductDetails/ProductDetails';
 import Loader from './componenets/utlis/Loader';
+import DashBoard from './componenets/DashBoard/DashBoard';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
         path:'productdetails/:id', element: <ProductDetails/>,
         loader: Loader('/product_dataset.json')
       }, 
+      {
+        path: 'dashboard', element: <DashBoard/>,
+        loader: Loader('/product_dataset.json')
+      }
     ]
   },
 ])
