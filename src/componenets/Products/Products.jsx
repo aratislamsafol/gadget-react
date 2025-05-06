@@ -1,7 +1,23 @@
 import { Link } from "react-router-dom"
 import Card from "../utlis/Card";
+import { useEffect, useState } from "react";
 
 export default function Products({datum}) {
+  const [category, setCategory] = useState([]);
+
+  useEffect(() => {
+    const allCategories = datum.map(data=> data.category);
+    const uniqueData = allCategories.reduce((acc, currentData)=> {
+      if(!acc.includes(currentData)) {
+        acc.push(currentData);
+      }
+      return acc;
+    },[])
+       
+    uniqueData.unshift("All Data");
+    setCategory(uniqueData);
+  }, [datum]);
+
   return (
     <div>
         <h3 className="font-bold text-2xl md:text-3xl lg:text-4xl text-center md:mt-4">Explore Cutting-Edge Gadgets</h3>
@@ -9,27 +25,11 @@ export default function Products({datum}) {
             {/* sideBar */}
             <div className="col-span-8 md:col-span-2">
               <div className="flex md:flex-col flex-wrap justify-center gap-3 md:gap-3 mt-4 md:mt-0 md:shadow-md p-3 rounded-lg ">
-                <div className="hover:text-white hover:bg-[#9538E2] rounded-2xl px-2 md:rounded-4xl bg-gray-100">
-                  <Link to="" className="block w-full p-2">All Product</Link>
-                </div>
-                <div className="hover:text-white hover:bg-[#9538E2] rounded-2xl px-2 md:rounded-4xl bg-gray-100">
-                  <Link to="" className="block w-full p-2">Laptops</Link>
-                </div>
-                <div>
-                  <p>Phones</p>
-                </div>
-                <div>
-                  <p>Accessories</p>
-                </div>
-                <div>
-                  <p>Smart Watches</p>
-                </div>
-                <div>
-                  <p>MacBook</p>
-                </div>
-                <div>
-                  <p>Iphone</p>
-                </div>
+                {
+                  category.map(data => <div className="hover:text-white hover:bg-[#9538E2] rounded-2xl px-2 md:rounded-4xl bg-gray-100">
+                    <Link to="" className="block w-full p-2">{data}</Link>
+                  </div>)
+                }
               </div>
               
             </div>
