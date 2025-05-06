@@ -50,9 +50,9 @@ export default function ProductDetails() {
               <Rating initialRating={rating} emptySymbol={<FaRegStar className="text-gray-400 w-5 h-5" />} fullSymbol={<FaStar className="text-yellow-400 w-5 h-5" />}/>
 
               <div className="flex gap-2">
-              <Button onClick={()=>handleToCart(product_id)} className=" hover:bg-purple-800"><span className='flex gap-2'>Add To Card <PiShoppingCart className='w-5 h-5'/></span></Button>
+              <Button onClick={()=>handleToCart(product_id)} className=" hover:bg-purple-800 text-white"><span className='flex gap-2'>Add To Card <PiShoppingCart className='w-5 h-5'/></span></Button>
 
-              <Button onClick={()=>handleToWishlist(product_id)} className="rounded-full hover:bg-purple-800 flex items-center justify-center "><IoMdHeartEmpty className='w-4 h-4'/></Button>
+              <Button onClick={()=>handleToWishlist(product_id)} className="rounded-full hover:bg-purple-800 flex items-center justify-center text-white"><IoMdHeartEmpty className='w-4 h-4'/></Button>
               </div>
             </div>
           </div>

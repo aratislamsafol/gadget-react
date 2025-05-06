@@ -7,6 +7,9 @@ import Home from './componenets/Home/Home';
 import ProductDetails from './componenets/ProductDetails/ProductDetails';
 import Loader from './componenets/utlis/Loader';
 import DashBoard from './componenets/DashBoard/DashBoard';
+import Card from './componenets/utlis/Card';
+import Cart from './componenets/Cart/Cart';
+import Wishlist from './componenets/WishList/Wishlist';
 
 const router = createBrowserRouter([
   {
@@ -23,7 +26,15 @@ const router = createBrowserRouter([
       {
         path: 'dashboard', element: <DashBoard/>,
         loader: Loader('/product_dataset.json')
-      }
+      },
+      {
+        path: 'dashboard/cart', element: <Cart />,
+        loader: Loader('/product_dataset.json')
+      }, 
+      {
+        path: 'dashboard/wishlist', element: <Wishlist />,
+        loader: Loader('/product_dataset.json')
+      }, 
     ]
   },
 ])

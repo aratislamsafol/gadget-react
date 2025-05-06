@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { PiShoppingCart } from "react-icons/pi";
 import { IoMdHeartEmpty } from "react-icons/io";
+import ProductContext from '../utlis/ProductContext';
 
 
 export default function Navbar() {
+    const {cartId} = useContext(ProductContext);
     const links = <>
         <li><NavLink to="/" className="font-medium text-base text-gray-700">Home</NavLink></li>
         <li><a className="font-medium text-base text-gray-700">Statistics</a></li>
@@ -33,8 +35,23 @@ export default function Navbar() {
             </ul>
         </div>
         <div className="navbar-end gap-4"> 
-            <Link to="" className='p-2 rounded-full border border-gray-300'><PiShoppingCart className='w-5 h-5'/></Link>
-            <Link to="" className='p-2 rounded-full border border-gray-300'><IoMdHeartEmpty className='w-5 h-5'/></Link>
+            
+            <Link to="dashboard/cart" className='relative p-2 rounded-full border border-gray-300'>
+                <PiShoppingCart className='w-5 h-5'/>
+                {cartId.length > 0 && 
+                    <div className='absolute -right-2 -top-2 w-6 h-6'>
+                        <p className='flex items-center justify-center rounded-full bg-purple-400 text-white text-xs w-full h-full'>{cartId.length}</p>
+                    </div>
+                }
+                
+            </Link>
+
+            <Link to="dashboard/wishlist" className='relative p-2 rounded-full border border-gray-300'>
+                <IoMdHeartEmpty className='w-5 h-5'/>
+                <div className='absolute -right-2 -top-2 w-6 h-6'>
+                    <p className='flex items-center justify-center rounded-full bg-purple-400 text-white text-xs w-full h-full'>14</p>
+                </div>
+            </Link>
         </div>
     </div>
   )
