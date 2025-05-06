@@ -6,19 +6,23 @@ import Button from '../utlis/Button';
 import { IoMdHeartEmpty } from "react-icons/io";
 import { PiShoppingCart } from "react-icons/pi";
 import ProductContext from '../utlis/ProductContext';
-import { addToStoreList } from '../utlis/localStorage';
+import { addToStoreList, getStoreList } from '../utlis/localStorage';
 
 export default function ProductDetails() {
-  const {handleToCart} = useContext(ProductContext);
+  const {handleToCart, setWishlistItems} = useContext(ProductContext);
   const {id} = useParams();
   const allData = useLoaderData();
   const targetData = allData.find(data => data.product_id === id)
   const {product_id, product_title, product_image, price, description, Specification, availability, rating } = targetData;
 
   const handleToAddWishlist = (id) => {
-    console.log(id);
     addToStoreList(id);
-  }
+    const storedList = getStoreList();
+    const checkData = allData.filter(data => storedList.includes(data.product_id));
+    setWishlistItems(checkData);
+    
+  };
+  
 
   return (
     <section>

@@ -8,6 +8,7 @@ export default function TabContainer({tab}) {
     const { cartId, setCart, wishlistItems, setWishlistItems } = useContext(ProductContext);
     const datum = useLoaderData();
     const cartItem = datum.filter(data => cartId.includes(data.product_id))
+    
     const removeProduct = (id) => {
         const newCart = [...cartId].filter(data => data !== id)
         setCart(newCart);
