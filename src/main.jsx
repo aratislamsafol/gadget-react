@@ -14,6 +14,7 @@ import Wishlist from './componenets/WishList/Wishlist';
 const router = createBrowserRouter([
   {
     path: '/', element: <Root/>,
+    loader: Loader('/product_dataset.json'),
     children: [
       {
         path:'/', element:<Home />,

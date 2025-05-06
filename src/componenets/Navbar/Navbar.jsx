@@ -6,7 +6,8 @@ import ProductContext from '../utlis/ProductContext';
 
 
 export default function Navbar() {
-    const {cartId} = useContext(ProductContext);
+    const {cartId,wishlistItems } = useContext(ProductContext);
+    
     const links = <>
         <li><NavLink to="/" className="font-medium text-base text-gray-700">Home</NavLink></li>
         <li><a className="font-medium text-base text-gray-700">Statistics</a></li>
@@ -48,9 +49,12 @@ export default function Navbar() {
 
             <Link to="dashboard/wishlist" className='relative p-2 rounded-full border border-gray-300'>
                 <IoMdHeartEmpty className='w-5 h-5'/>
+                {wishlistItems.length > 0 && 
                 <div className='absolute -right-2 -top-2 w-6 h-6'>
-                    <p className='flex items-center justify-center rounded-full bg-purple-400 text-white text-xs w-full h-full'>14</p>
+                    <p className='flex items-center justify-center rounded-full bg-purple-400 text-white text-xs w-full h-full'>{wishlistItems.length}</p>
                 </div>
+                }
+              
             </Link>
         </div>
     </div>

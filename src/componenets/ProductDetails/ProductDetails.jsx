@@ -6,13 +6,19 @@ import Button from '../utlis/Button';
 import { IoMdHeartEmpty } from "react-icons/io";
 import { PiShoppingCart } from "react-icons/pi";
 import ProductContext from '../utlis/ProductContext';
+import { addToStoreList } from '../utlis/localStorage';
 
 export default function ProductDetails() {
-  const {handleToCart, handleToWishlist} = useContext(ProductContext);
+  const {handleToCart} = useContext(ProductContext);
   const {id} = useParams();
   const allData = useLoaderData();
   const targetData = allData.find(data => data.product_id === id)
   const {product_id, product_title, product_image, price, description, Specification, availability, rating } = targetData;
+
+  const handleToAddWishlist = (id) => {
+    console.log(id);
+    addToStoreList(id);
+  }
 
   return (
     <section>
@@ -52,7 +58,7 @@ export default function ProductDetails() {
               <div className="flex gap-2">
               <Button onClick={()=>handleToCart(product_id)} className=" hover:bg-purple-800 text-white"><span className='flex gap-2'>Add To Card <PiShoppingCart className='w-5 h-5'/></span></Button>
 
-              <Button onClick={()=>handleToWishlist(product_id)} className="rounded-full hover:bg-purple-800 flex items-center justify-center text-white"><IoMdHeartEmpty className='w-4 h-4'/></Button>
+              <Button onClick={()=>handleToAddWishlist(product_id)} className="rounded-full hover:bg-purple-800 flex items-center justify-center text-white"><IoMdHeartEmpty className='w-4 h-4'/></Button>
               </div>
             </div>
           </div>
