@@ -1,25 +1,7 @@
-import { useContext } from "react";
-import ProductContext from "../utlis/ProductContext";
-import { useLoaderData } from "react-router-dom";
 import HorizontalCard from "../utlis/HorizontalCard";
-import { removeFromStoreList } from "../utlis/localStorage";
+import Button from "../utlis/Button";
 
-export default function TabContainer({tab}) {
-    const { cartId, setCart, wishlistItems, setWishlistItems } = useContext(ProductContext);
-    const datum = useLoaderData();
-    const cartItem = datum.filter(data => cartId.includes(data.product_id))
-    
-    const removeProduct = (id) => {
-        const newCart = [...cartId].filter(data => data !== id)
-        setCart(newCart);
-    }
-
-    const handleToremoveWishlist = (id) => {
-        const newWishlist = [...wishlistItems].filter(data => data.product_id !== id)
-        setWishlistItems(newWishlist);
-        removeFromStoreList(id);
-    }
-
+export default function TabContainer({tab, cartItem, handleToremoveWishlist, removeProduct, cartId, wishlistItems}) {
     return (
         <div>
           {tab === 'tab1' && (
@@ -63,6 +45,5 @@ export default function TabContainer({tab}) {
           )}
         </div>
       );
-      
 }
 

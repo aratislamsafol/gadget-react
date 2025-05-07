@@ -25,16 +25,12 @@ export default function Products({datum}) {
 
   const handleCategory = (cat) => {
     setActiveCategory(cat);
-    const setData = [];
     if(cat === 'All Data') {
-      datum.map(data=>setData.push(data))
+      setCatDataShow(datum);
+    } else {
+      const filtered = datum.filter(data => data.category === cat);
+      setCatDataShow(filtered); 
     }
-    datum.filter(data=> {
-      if(data.category === cat) {
-        setData.push(data);
-      }
-    });
-    setCatDataShow(setData)
   }
   return (
     <div className="px-3 md:px-6 lg:px-10">
@@ -59,7 +55,7 @@ export default function Products({datum}) {
                 <div className="grid grid-cols-1 md:grid cols-2 lg:grid-cols-3 gap-5">
                   {
                     category.length > 0 ?
-                    catDataShow.map(data => <Card data ={data} />)
+                    catDataShow.map(data => <Card key={data.product_id} data ={data} />)
                     : "No Data & Category Here" 
                   }
                 </div>
