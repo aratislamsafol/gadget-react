@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { useLoaderData, useLocation } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import Button from "../utlis/Button";
 import TabContainer from "../TabContainer/TabContainer";
 import { removeFromStoreList } from "../utlis/localStorage";
@@ -7,6 +7,7 @@ import ProductContext from "../utlis/ProductContext";
 import Modals from "../utlis/Modals";
 
 export default function DashBoard() {
+    const redirect = useNavigate();
     const location = useLocation();
     const [tab, setTab] = useState('tab1');
     const { cartId, setCart, wishlistItems, setWishlistItems } = useContext(ProductContext);
@@ -44,6 +45,7 @@ export default function DashBoard() {
 
     const removeCartAll = () => {
         setCart([]);
+        redirect("/");
     }
 
     const totalPrice = () => {

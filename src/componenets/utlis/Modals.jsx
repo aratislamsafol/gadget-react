@@ -13,9 +13,8 @@ export default function Modals({removeAll, total}) {
                 <p className='text-lg'>Thanks for purchasing.</p>
                 <p className='my-1'>Total: {total} tk</p>
             </div>
-            <form method="dialog w-full">
-                <button onClick={removeAll} className="btn w-full  rounded-4xl">Close</button>
-            </form>
+            
+            <button type="button"onClick={() => {removeAll();document.getElementById("my_modal_1").close()}} className="btn w-full rounded-4xl">Close</button>
         </div>
     </dialog>
   )
