@@ -5,17 +5,20 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import ProductContext from '../utlis/ProductContext';
 
 
-export default function Navbar() {
+export default function Navbar({ location }) {
     const { cartId, wishlistItems } = useContext(ProductContext);
+    const isHome = location.pathname === "/";
+
 
     const links = <>
-        <li><NavLink to="/" className={`${({ isActive }) => isActive && "active"} font-medium text-base text-gray-700`}>Home</NavLink></li>
-        <li><NavLink to="products" className={`${({ isActive }) => isActive && "active"} font-medium text-base text-gray-700`}>Statistics</NavLink></li>
-        <li><NavLink to="dashboard" className={`${({ isActive }) => isActive && "active"} font-medium text-base text-gray-700`}>Dashboard</NavLink></li>
+        <li><NavLink to="/" className={({ isActive }) =>
+                `${isActive ? (isHome ? "isHomeActive" : "active") : ""} ${isHome ? "text-white" : "text-gray-700"} font-medium text-base`}>Home</NavLink></li>
+        <li><NavLink to="products" className={`${({ isActive }) => isActive && "active"}  ${isHome? "text-white": 'text-gray-700'} font-medium text-base text-gray-700`}>Statistics</NavLink></li>
+        <li><NavLink to="dashboard" className={`${({ isActive }) => isActive && "active"} ${isHome? "text-white": 'text-gray-700'} font-medium text-base`}>Dashboard</NavLink></li>
     </>
 
     return (
-        <div className="navbar bg-base-100 ">
+        <div className={`navbar ${isHome ? 'bg-[#9538E2] text-white': 'bg-base-100 text-black'}`}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -28,7 +31,7 @@ export default function Navbar() {
                     </ul>
                 </div>
                 <NavLink to="/" className={({ isActive }) =>
-                    `font-bold text-xl ${isActive ? "text-black" : "text-black"}`
+                    `font-bold text-xl ${isActive ? "text-black" : "text-black"} ${isHome && 'text-white'}`
                 }>Gadget Heaven</NavLink>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -45,7 +48,6 @@ export default function Navbar() {
                             <p className='flex items-center justify-center rounded-full bg-purple-400 text-white text-xs w-full h-full'>{cartId.length}</p>
                         </div>
                     }
-
                 </Link>
 
                 <Link to="dashboard/wishlist" className='relative p-2 rounded-full border border-gray-300'>

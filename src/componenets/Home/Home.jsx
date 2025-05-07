@@ -4,10 +4,11 @@ import Products from '../Products/Products'
 
 export default function Home() {
   const datum = useLoaderData();
-  return (
-    <div>
-      <Banner/>
-      <Products datum={datum}/>
-    </div>
-  )
+
+    return (
+      <div>
+        <Banner/>
+        <Products datum={datum}/>
+      </div>
+    )
 }

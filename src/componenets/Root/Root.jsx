@@ -1,4 +1,4 @@
-import { Outlet, useLoaderData } from "react-router-dom";
+import { Outlet, useLoaderData, useLocation } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import ProductContext from "../utlis/ProductContext";
@@ -10,6 +10,8 @@ export default function Root() {
   const datum = useLoaderData();
   const [cartId, setCart] = useState([]);
   const [wishlistItems, setWishlistItems] = useState([]);
+  const location = useLocation();
+  
 
   useEffect(()=>{
     const getData = getStoreList();
@@ -28,7 +30,7 @@ const handleToCart = (id) => {
     <div className="mx-auto max-w-7xl regular_font px-2 sm:px-3 lg:px-0">
       <ToastContainer />
       <ProductContext.Provider value={{handleToCart, cartId, setCart, wishlistItems, setWishlistItems}}>
-        <Navbar />
+        <Navbar location={location} />
         <Outlet />
       </ProductContext.Provider>
       <Footer />
