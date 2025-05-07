@@ -9,16 +9,15 @@ export default function Navbar({ location }) {
     const { cartId, wishlistItems } = useContext(ProductContext);
     const isHome = location.pathname === "/";
 
-
     const links = <>
         <li><NavLink to="/" className={({ isActive }) =>
                 `${isActive ? (isHome ? "isHomeActive" : "active") : ""} ${isHome ? "text-white" : "text-gray-700"} font-medium text-base`}>Home</NavLink></li>
-        <li><NavLink to="products" className={`${({ isActive }) => isActive && "active"}  ${isHome? "text-white": 'text-gray-700'} font-medium text-base text-gray-700`}>Statistics</NavLink></li>
+        <li><NavLink to="statistics" className={`${({ isActive }) => isActive && "active"}  ${isHome? "text-white": 'text-gray-700'} font-medium text-base text-gray-700`}>Statistics</NavLink></li>
         <li><NavLink to="dashboard" className={`${({ isActive }) => isActive && "active"} ${isHome? "text-white": 'text-gray-700'} font-medium text-base`}>Dashboard</NavLink></li>
     </>
 
     return (
-        <div className={`navbar ${isHome ? 'bg-[#9538E2] text-white': 'bg-base-100 text-black'}`}>
+        <div className={`navbar px-3 md:px-6 lg:px-10 ${isHome ? 'bg-[#9538E2] text-white': 'bg-base-100 text-black'}`}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

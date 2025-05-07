@@ -10,6 +10,7 @@ import DashBoard from './componenets/DashBoard/DashBoard';
 import Card from './componenets/utlis/Card';
 import Cart from './componenets/Cart/Cart';
 import Wishlist from './componenets/WishList/Wishlist';
+import Statisctics from './componenets/Statistics/Statisctics';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
         path: 'dashboard/wishlist', element: <Wishlist />,
         loader: Loader('/product_dataset.json')
       }, 
+      {
+        path: 'statistics', element: <Statisctics />,
+        loader: Loader('/product_dataset.json')
+      }
     ]
   },
 ])

@@ -37,7 +37,7 @@ export default function Products({datum}) {
     setCatDataShow(setData)
   }
   return (
-    <div>
+    <div className="px-3 md:px-6 lg:px-10">
         <h3 className="font-bold text-2xl md:text-3xl lg:text-4xl text-center md:mt-4">Explore Cutting-Edge Gadgets</h3>
         <div className="md:grid md:grid-cols-12 my-10 text-center md:gap-6">
             {/* sideBar */}
